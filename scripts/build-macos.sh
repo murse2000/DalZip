@@ -1,6 +1,7 @@
 #!/bin/bash
 set -euo pipefail
 cd "$(dirname "$0")/.."
+version=$(node -p "JSON.parse(require('fs').readFileSync('src-tauri/tauri.conf.json')).version")
 npm run tauri -- build --bundles app
 bash scripts/build-finder-extension.sh
 mkdir -p src-tauri/target/release/bundle/macos/DalZip.app/Contents/PlugIns
@@ -13,6 +14,10 @@ staging=$(mktemp -d "${TMPDIR:-/tmp}/dalzip-dmg.XXXXXX")
 trap 'rm -rf "$staging"' EXIT
 ditto artifacts/DalZip.app "$staging/DalZip.app"
 ln -s /Applications "$staging/Applications"
-hdiutil create -volname DalZip -srcfolder "$staging" -ov -format UDZO artifacts/DalZip-0.1.0-arm64.dmg
+hdiutil create -volname DalZip -srcfolder "$staging" -ov -format UDZO artifacts/DalZip-${version}-arm64.dmg
 codesign --verify --deep --strict artifacts/DalZip.app
-shasum -a 256 artifacts/DalZip-0.1.0-arm64.dmg > artifacts/SHA256SUMS-macos.txt
+shasum -a 256 artifacts/DalZip-${version}-arm64.dmg > artifacts/SHA256SUMS-macos.txt
+
+if [[ -n "${TAURI_SIGNING_PRIVATE_KEY:-}" ]]; then
+  node scripts/package-updates.mjs macos
+fi

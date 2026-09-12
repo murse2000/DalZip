@@ -5,3 +5,9 @@
 @media(prefers-contrast:more){:root{--muted:#c0cde3;--line:#7287a7}.glass{background:#18253c}.muted,.small,.welcome p,.action-card p,.signature{color:#b7c8e4}}
 @media(prefers-reduced-transparency:reduce){.glass{backdrop-filter:none;background:#17243b}.ambient{display:none}}
 .option-toggle{display:flex;align-items:center;gap:10px;color:#a4b9d6;font-size:11px;margin:20px 0;line-height:1.7}.option-toggle input,.extensions input{accent-color:#9fc9ff;width:15px;height:15px;padding:0;flex-shrink:0}.extensions{display:flex;gap:12px 17px;flex-wrap:wrap;margin:10px 0 20px}.extensions label{display:flex;align-items:center;gap:5px;font-size:11px;color:#9eb6d5}.compression-options{gap:12px}.compression-options select{min-width:125px;width:100%}.compression-options label:nth-child(2){flex:1}.hero-icon{border-radius:24%;transform:none;width:180px;height:180px}
+
+.update-banner { position: fixed; top: 16px; right: 20px; z-index: 30; display: flex; align-items: center; gap: 18px; padding: 14px 18px; max-width: calc(100vw - 40px); box-shadow: 0 12px 45px #0008; }
+.update-banner[hidden] { display: none; }
+.update-dialog { max-width: 560px; }
+.update-notes { white-space: pre-wrap; overflow-wrap: anywhere; font: inherit; max-height: 200px; overflow: auto; color: #b9c8dd; }
+.update-status { color: #91d7ff; }

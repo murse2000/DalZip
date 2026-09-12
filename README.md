@@ -4,8 +4,8 @@ Apple Silicon과 Windows x64용 로컬 압축 앱입니다. MultiXterm의 달베
 
 ## 실행과 설치
 
-- macOS: `artifacts/DalZip.app` 또는 `artifacts/DalZip-0.1.0-arm64.dmg`. DMG를 열고 DalZip을 응용 프로그램 폴더로 옮깁니다.
-- Windows: `artifacts/DalZip-0.1.0-x64-setup.exe`. Windows 11 x64용입니다. WebView2가 없는 경우 설치 프로그램이 해당 런타임을 설치합니다. Mac 교차 빌드의 UnRAR SIMD 코드는 AES-NI / SSE4.1을 지원하는 CPU를 대상으로 합니다.
+- macOS: `artifacts/DalZip.app` 또는 `artifacts/DalZip-0.1.1-arm64.dmg`. DMG를 열고 DalZip을 응용 프로그램 폴더로 옮깁니다.
+- Windows: `artifacts/DalZip-0.1.1-x64-setup.exe`. Windows 11 x64용입니다. WebView2가 없는 경우 설치 프로그램이 해당 런타임을 설치합니다. Mac 교차 빌드의 UnRAR SIMD 코드는 AES-NI / SSE4.1을 지원하는 CPU를 대상으로 합니다.
 - 파일 연결: 앱의 **설정 및 파일 연결**에서 확장자를 선택합니다. macOS는 Launch Services를 통해 설정하고, Windows는 연결 후보 등록 후 기본 앱 설정을 엽니다. Windows의 최종 기본 앱 선택은 사용자에게 있습니다.
 - Finder 메뉴: Finder 확장이 포함되어 있습니다. 설정의 **Finder 확장 등록 및 설정 열기**를 사용하고, 시스템 설정 → 일반 → 로그인 항목 및 확장 프로그램 → Finder에서 DalZip을 켭니다. 운영체제 버전에 따라 ‘확장 프로그램’ 위치가 다를 수 있습니다.
 - Windows 메뉴: 설치 프로그램이 탐색기 확장을 등록합니다. Windows 11에서는 **추가 옵션 표시**에서 확인합니다. 앱 설정에서도 다시 등록할 수 있습니다.
@@ -15,6 +15,14 @@ Apple Silicon과 Windows x64용 로컬 압축 앱입니다. MultiXterm의 달베
 압축 파일만 선택하면 **별도 폴더에 압축 풀기** 메뉴도 표시됩니다. 각 압축 파일 옆에 별도 결과 폴더를 만들고 순서대로 해제합니다. 같은 이름의 기존 폴더는 덮어쓰지 않습니다. 암호가 필요하면 앱에서 입력하며, 해제 후 폴더 열기 설정을 따릅니다.
 
 현재 결과물은 macOS 로컬 임시 서명 및 Windows 미서명 빌드입니다. 공개 배포용 Developer ID 서명·공증과 Windows 코드 서명은 별도 배포 인증서가 필요합니다. 이 환경에서 유효한 코드 서명 인증서는 발견되지 않았습니다. macOS에서 Finder 확장 로드, 동적 압축 메뉴의 파일 전달, 우클릭 압축 해제와 결과 폴더 자동 열기를 확인했습니다. Windows 설치·탐색기 동작은 Windows 실기기 검증이 남아 있습니다.
+
+## 자동 업데이트
+
+공개 저장소: https://github.com/murse2000/DalZip · 최신 설치 파일: https://github.com/murse2000/DalZip/releases/latest
+
+0.1.1부터 실행 시와 6시간마다 HTTPS 업데이트 피드를 확인합니다. 새 버전이 있으면 알림을 표시하며, 설정의 **업데이트 확인**으로도 확인할 수 있습니다. **업데이트 설치** 버튼에 동의한 경우에만 파일을 다운로드하고 서명을 검증한 뒤 설치·재시작합니다. **나중에**는 다운로드하지 않습니다. 압축·해제 작업 중에는 업데이트를 설치하지 않습니다. 자동 확인의 네트워크 오류는 파일 작업을 방해하지 않으며 수동 확인에서는 오류를 안내합니다.
+
+업데이트는 Windows x64 설치 파일과 macOS Apple Silicon 앱 번들을 구분합니다. macOS 번들에는 Finder 확장도 포함합니다. 서명이 잘못되면 설치하지 않습니다. 업데이트 서명은 OS 코드 서명·공증과 별개의 검증입니다. 0.1.0 사용자는 0.1.1을 한 번 직접 설치해야 합니다.
 
 ## 지원 형식
 
@@ -69,6 +77,8 @@ bash scripts/build-macos.sh
 
 공개 서명 시 `DALZIP_SIGN_IDENTITY`를 지정합니다. 공증은 별도 배포 절차에서 수행해야 합니다. Finder 확장 코드는 `native/macos/FinderSync.swift`, 빌드는 `scripts/build-finder-extension.sh`입니다.
 
+Windows에서 최초 `npm run check`/`npm test` 전에 `./scripts/build-windows-shell.ps1`로 탐색기 DLL을 생성합니다.
+
 Windows 네이티브 패키지:
 
 ```powershell
@@ -86,10 +96,18 @@ python3 scripts/build-windows-cross.py
 
 Windows 탐색기 확장은 `native/windows/ShellExtension.cpp`의 `IExplorerCommand` 구현입니다. 설치/제거 등록은 `src-tauri/windows-hooks.nsh`에서 처리합니다. UnRAR의 교차 빌드 수정은 `src-tauri/vendor/README.md`에 기록했습니다.
 
-`.github/workflows/build.yml`에는 macOS / Windows의 검증과 패키지 생성 작업이 들어 있습니다. 아직 이 프로젝트를 원격 저장소에 게시하거나 해당 CI를 실행하지 않았습니다.
+`.github/workflows/build.yml`에는 macOS / Windows의 검증과 패키지 생성 작업이 들어 있습니다. 공개 저장소에서 실행할 수 있습니다. 버전 태그를 푸시하면 두 OS 검증과 패키지 생성이 성공한 뒤 설치 파일·서명·latest.json을 하나의 릴리스로 공개합니다.
 
 ## 아이콘과 라이선스
 
 아이콘 원본: `assets/dalzip-icon.png`. ImageGen 내장 도구로 기존 MultiXterm 달베어 아이콘을 편집했습니다. 최종 프롬프트와 적용 경로는 `assets/README.md`에 기록했습니다.
 
 서드파티 라이브러리 목록은 `licenses/DEPENDENCIES.md`, UnRAR 라이선스는 `licenses/UnRAR.txt`입니다. RAR 테스트 자료는 unrar-rs 0.5.8의 공개 테스트 자료이며 `tests/fixtures/UNRAR-RS-LICENSE`를 포함합니다.
+
+## 다음 버전 배포
+
+1. package.json, Cargo.toml, tauri.conf.json과 Finder 확장 Info.plist의 버전을 맞추고 Cargo.lock/package-lock.json을 갱신합니다.
+2. `releases/v버전.md`에 변경 사항을 작성하고 테스트를 실행합니다.
+3. 변경 사항을 커밋하고 해당 `v버전` 태그를 푸시합니다. GitHub Actions가 검증·서명·릴리스 공개를 수행합니다.
+
+업데이트 개인 키는 저장소에 넣지 않습니다. GitHub Secrets의 `TAURI_SIGNING_PRIVATE_KEY`를 사용하며, 이 Mac의 로컬 키는 `~/.config/dalzip/updater.key`에 보관합니다. 키를 잃으면 기존 설치본에 같은 신뢰 키로 업데이트를 배포할 수 없으므로 별도로 안전하게 백업해야 합니다. 로컬 서명 빌드는 `TAURI_SIGNING_PRIVATE_KEY`를 키 파일 경로로 지정해 기존 빌드 스크립트를 실행합니다. 두 OS 파일을 artifacts에 모은 뒤 `node scripts/release-manifest.mjs`로 피드를 생성합니다.

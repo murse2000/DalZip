@@ -1,10 +1,10 @@
 $ErrorActionPreference = "Stop"
 Set-Location (Join-Path $PSScriptRoot "..")
-cmake -S native/windows -B native/windows/build -A x64
-if ($LASTEXITCODE) { throw "탐색기 확장 구성 실패" }
-cmake --build native/windows/build --config Release
-if ($LASTEXITCODE) { throw "탐색기 확장 빌드 실패" }
-New-Item -ItemType Directory -Force src-tauri/resources | Out-Null
-Copy-Item native/windows/build/Release/DalZipShell.dll src-tauri/resources/DalZipShell.dll -Force
+& (Join-Path $PSScriptRoot "build-windows-shell.ps1")
 npm run tauri -- build --bundles nsis --config src-tauri/tauri.windows.conf.json
 if ($LASTEXITCODE) { throw "Windows 패키지 빌드 실패" }
+
+if ($env:TAURI_SIGNING_PRIVATE_KEY) {
+  node scripts/package-updates.mjs windows
+  if ($LASTEXITCODE) { throw "업데이트 서명 실패" }
+}

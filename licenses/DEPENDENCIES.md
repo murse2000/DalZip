@@ -67,6 +67,7 @@
 - constant_time_eq 0.4.2 — CC0-1.0 OR MIT-0 OR Apache-2.0
 - cookie 0.18.2 — MIT OR Apache-2.0
 - core-foundation 0.10.1 — MIT OR Apache-2.0
+- core-foundation 0.9.4 — MIT OR Apache-2.0
 - core-foundation-sys 0.8.7 — MIT OR Apache-2.0
 - core-graphics 0.25.0 — MIT OR Apache-2.0
 - core-graphics-types 0.2.0 — MIT OR Apache-2.0
@@ -86,7 +87,6 @@
 - cssparser-macros 0.6.1 — MPL-2.0
 - ctor 0.8.0 — Apache-2.0 OR MIT
 - ctor-proc-macro 0.0.7 — Apache-2.0 OR MIT
-- dalzip 0.1.0 — 별도 라이선스 확인
 - darling 0.24.1 — MIT
 - darling_core 0.24.1 — MIT
 - darling_macro 0.24.1 — MIT
@@ -182,6 +182,7 @@
 - httparse 1.10.1 — MIT OR Apache-2.0
 - hybrid-array 0.4.15 — MIT OR Apache-2.0
 - hyper 1.11.1 — MIT
+- hyper-rustls 0.27.9 — Apache-2.0 OR ISC OR MIT
 - hyper-util 0.1.20 — MIT
 - iana-time-zone 0.1.65 — MIT OR Apache-2.0
 - iana-time-zone-haiku 0.1.2 — MIT OR Apache-2.0
@@ -211,6 +212,8 @@
 - jiff-tzdb 0.1.8 — Unlicense OR MIT
 - jiff-tzdb-platform 0.1.3 — Unlicense OR MIT
 - jni 0.21.1 — MIT/Apache-2.0
+- jni 0.22.4 — MIT OR Apache-2.0
+- jni-macros 0.22.4 — MIT OR Apache-2.0
 - jni-sys 0.3.1 — MIT OR Apache-2.0
 - jni-sys 0.4.1 — MIT OR Apache-2.0
 - jni-sys-macros 0.4.1 — MIT OR Apache-2.0
@@ -236,6 +239,7 @@
 - memchr 2.8.3 — Unlicense OR MIT
 - memoffset 0.9.1 — MIT
 - mime 0.3.17 — MIT OR Apache-2.0
+- minisign-verify 0.2.5 — MIT
 - miniz_oxide 0.8.9 — MIT OR Zlib OR Apache-2.0
 - miniz_oxide 0.9.1 — MIT OR Zlib OR Apache-2.0
 - mio 1.2.3 — MIT
@@ -260,13 +264,16 @@
 - objc2-exception-helper 0.1.1 — Zlib OR Apache-2.0 OR MIT
 - objc2-foundation 0.3.2 — MIT
 - objc2-io-surface 0.3.2 — Zlib OR Apache-2.0 OR MIT
+- objc2-osa-kit 0.3.2 — Zlib OR Apache-2.0 OR MIT
 - objc2-quartz-core 0.3.2 — Zlib OR Apache-2.0 OR MIT
 - objc2-ui-kit 0.3.2 — Zlib OR Apache-2.0 OR MIT
 - objc2-user-notifications 0.3.2 — Zlib OR Apache-2.0 OR MIT
 - objc2-web-kit 0.3.2 — Zlib OR Apache-2.0 OR MIT
 - once_cell 1.21.4 — MIT OR Apache-2.0
+- openssl-probe 0.2.1 — MIT OR Apache-2.0
 - option-ext 0.2.0 — MPL-2.0
 - ordered-stream 0.2.0 — MIT OR Apache-2.0
+- osakit 0.3.1 — MIT OR Apache-2.0
 - pango 0.18.3 — MIT
 - pango-sys 0.18.0 — MIT
 - parking 2.2.1 — Apache-2.0 OR MIT
@@ -314,16 +321,26 @@
 - regex-syntax 0.8.11 — MIT OR Apache-2.0
 - reqwest 0.13.5 — MIT OR Apache-2.0
 - rfd 0.16.0 — MIT
+- ring 0.17.14 — Apache-2.0 AND ISC
 - rustc-hash 2.1.3 — Apache-2.0 OR MIT
 - rustc_version 0.4.1 — MIT OR Apache-2.0
 - rustix 1.1.4 — Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT
+- rustls 0.23.44 — Apache-2.0 OR ISC OR MIT
+- rustls-native-certs 0.8.4 — Apache-2.0 OR ISC OR MIT
+- rustls-pki-types 1.15.1 — MIT OR Apache-2.0
+- rustls-platform-verifier 0.7.0 — MIT OR Apache-2.0
+- rustls-platform-verifier-android 0.1.1 — MIT OR Apache-2.0
+- rustls-webpki 0.103.15 — ISC
 - rustversion 1.0.23 — MIT OR Apache-2.0
 - same-file 1.0.6 — Unlicense/MIT
+- schannel 0.1.29 — MIT
 - schemars 0.8.22 — MIT
 - schemars 0.9.0 — MIT
 - schemars 1.2.2 — MIT
 - schemars_derive 0.8.22 — MIT
 - scopeguard 1.2.0 — MIT OR Apache-2.0
+- security-framework 3.7.0 — MIT OR Apache-2.0
+- security-framework-sys 2.17.0 — MIT OR Apache-2.0
 - selectors 0.36.1 — MPL-2.0
 - semver 1.0.28 — MIT OR Apache-2.0
 - serde 1.0.229 — MIT OR Apache-2.0
@@ -347,6 +364,8 @@
 - shlex 2.0.1 — MIT OR Apache-2.0
 - signal-hook-registry 1.4.8 — MIT OR Apache-2.0
 - simd-adler32 0.3.10 — MIT
+- simd_cesu8 1.2.0 — Apache-2.0 OR MIT
+- simdutf8 0.1.5 — MIT OR Apache-2.0
 - siphasher 1.0.3 — MIT/Apache-2.0
 - slab 0.4.12 — MIT
 - smallvec 1.16.1 — MIT OR Apache-2.0
@@ -365,6 +384,8 @@
 - syn 3.0.5 — MIT OR Apache-2.0
 - sync_wrapper 1.0.2 — Apache-2.0
 - synstructure 0.13.2 — MIT
+- system-configuration 0.7.0 — MIT OR Apache-2.0
+- system-configuration-sys 0.6.0 — MIT OR Apache-2.0
 - system-deps 6.2.2 — MIT OR Apache-2.0
 - tao 0.35.3 — Apache-2.0
 - tao-macros 0.1.4 — MIT OR Apache-2.0
@@ -378,6 +399,7 @@
 - tauri-plugin-dialog 2.7.3 — Apache-2.0 OR MIT
 - tauri-plugin-fs 2.5.2 — Apache-2.0 OR MIT
 - tauri-plugin-single-instance 2.4.4 — Apache-2.0 OR MIT
+- tauri-plugin-updater 2.11.0 — Apache-2.0 OR MIT
 - tauri-runtime 2.11.3 — Apache-2.0 OR MIT
 - tauri-runtime-wry 2.11.4 — Apache-2.0 OR MIT
 - tauri-utils 2.9.3 — Apache-2.0 OR MIT
@@ -395,6 +417,7 @@
 - tinyvec 1.13.2 — Zlib OR Apache-2.0 OR MIT
 - tinyvec_macros 0.1.1 — MIT OR Apache-2.0 OR Zlib
 - tokio 1.53.1 — MIT
+- tokio-rustls 0.26.5 — MIT OR Apache-2.0
 - tokio-util 0.7.19 — MIT
 - toml 0.8.2 — MIT OR Apache-2.0
 - toml 0.9.12+spec-1.1.0 — MIT OR Apache-2.0
@@ -429,6 +452,7 @@
 - unicode-normalization 0.1.25 — MIT OR Apache-2.0
 - unicode-segmentation 1.13.3 — MIT OR Apache-2.0
 - unrar_sys 0.5.8 — MIT OR Apache-2.0
+- untrusted 0.9.0 — ISC
 - url 2.5.8 — MIT OR Apache-2.0
 - urlencoding 2.1.3 — MIT
 - urlpattern 0.3.0 — MIT
@@ -452,6 +476,7 @@
 - web_atoms 0.2.6 — MIT OR Apache-2.0
 - webkit2gtk 2.0.2 — MIT
 - webkit2gtk-sys 2.0.2 — MIT
+- webpki-root-certs 1.0.9 — CDLA-Permissive-2.0
 - webview2-com 0.38.2 — MIT
 - webview2-com-macros 0.8.1 — MIT
 - webview2-com-sys 0.38.2 — MIT
@@ -474,11 +499,13 @@
 - windows-link 0.2.1 — MIT OR Apache-2.0
 - windows-numerics 0.2.0 — MIT OR Apache-2.0
 - windows-numerics 0.3.1 — MIT OR Apache-2.0
+- windows-registry 0.6.1 — MIT OR Apache-2.0
 - windows-result 0.3.4 — MIT OR Apache-2.0
 - windows-result 0.4.1 — MIT OR Apache-2.0
 - windows-strings 0.4.2 — MIT OR Apache-2.0
 - windows-strings 0.5.1 — MIT OR Apache-2.0
 - windows-sys 0.45.0 — MIT OR Apache-2.0
+- windows-sys 0.52.0 — MIT OR Apache-2.0
 - windows-sys 0.59.0 — MIT OR Apache-2.0
 - windows-sys 0.60.2 — MIT OR Apache-2.0
 - windows-sys 0.61.2 — MIT OR Apache-2.0
@@ -520,6 +547,7 @@
 - wry 0.55.1 — Apache-2.0 OR MIT
 - x11 2.21.0 — MIT
 - x11-dl 2.21.0 — MIT
+- xattr 1.6.1 — MIT OR Apache-2.0
 - yoke 0.8.3 — Unicode-3.0
 - yoke-derive 0.8.2 — Unicode-3.0
 - zbus 5.19.0 — MIT
@@ -533,6 +561,7 @@
 - zerotrie 0.2.5 — Unicode-3.0
 - zerovec 0.11.8 — Unicode-3.0
 - zerovec-derive 0.11.6 — Unicode-3.0
+- zip 4.6.1 — MIT
 - zip 6.0.0 — MIT
 - zlib-rs 0.6.7 — Zlib
 - zmij 1.0.23 — MIT

@@ -1,6 +1,28 @@
 {
-  "name": "dalzip", "version": "0.1.0", "private": true, "type": "module",
-  "scripts": {"dev":"vite --host 127.0.0.1", "build":"tsc && vite build", "tauri":"tauri", "app:dev":"tauri dev", "app:build":"tauri build", "test":"cargo test --manifest-path src-tauri/Cargo.toml", "check":"npm run build && cargo clippy --manifest-path src-tauri/Cargo.toml --all-targets -- -D warnings"},
-  "dependencies":{"@tauri-apps/api":"^2.11.0","@tauri-apps/plugin-dialog":"^2.7.0","lucide":"^0.577.0"},
-  "devDependencies":{"@tauri-apps/cli":"^2.11.4","typescript":"^5.9.3","vite":"^7.3.1"}
+  "name": "dalzip",
+  "version": "0.1.1",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "tsc && vite build",
+    "tauri": "tauri",
+    "app:dev": "tauri dev",
+    "app:build": "tauri build",
+    "test": "npm run test:ui && cargo test --manifest-path src-tauri/Cargo.toml",
+    "check": "npm run build && cargo clippy --manifest-path src-tauri/Cargo.toml --all-targets -- -D warnings",
+    "test:ui": "vitest run"
+  },
+  "dependencies": {
+    "@tauri-apps/api": "^2.11.0",
+    "@tauri-apps/plugin-dialog": "^2.7.0",
+    "lucide": "^0.577.0"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^2.11.4",
+    "jsdom": "^30.0.1",
+    "typescript": "^5.9.3",
+    "vite": "^7.3.1",
+    "vitest": "^5.0.0"
+  }
 }

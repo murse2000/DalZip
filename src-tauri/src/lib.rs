@@ -2,6 +2,7 @@ pub mod archive;
 pub mod formats;
 mod integration;
 mod rar;
+mod updater;
 mod verification;
 mod zip_reader;
 use std::{
@@ -158,6 +159,8 @@ fn receive(app: &tauri::AppHandle, paths: Vec<String>, compress: bool, extract: 
 pub fn run() {
     tauri::Builder::default()
         .manage(State::default())
+        .manage(updater::PendingUpdate::default())
+        .plugin(tauri_plugin_updater::Builder::new().build())
         .plugin(tauri_plugin_single_instance::init(|app, args, _| {
             let compress = args.iter().any(|s| s == "--compress");
             let extract = args.iter().any(|s| s == "--extract");
@@ -173,6 +176,8 @@ pub fn run() {
         }))
         .plugin(tauri_plugin_dialog::init())
         .invoke_handler(tauri::generate_handler![
+            updater::check_update,
+            updater::install_update,
             inspect_archive,
             extract_archive,
             create_archive,
