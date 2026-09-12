@@ -1,0 +1,21 @@
+name: Windows 릴리스 설치 검증
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  upgrade:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: 업로드한 설치 파일 받기
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          $version = (Get-Content src-tauri/tauri.conf.json | ConvertFrom-Json).version
+          gh release download "v$version" --repo "$env:GITHUB_REPOSITORY" --pattern "DalZip-$version-x64-setup.exe" --dir artifacts
+          if ($LASTEXITCODE) { throw "릴리스 설치 파일 다운로드 실패" }
+      - name: 이전 DLL 사용 중 업데이트 설치 검증
+        shell: pwsh
+        run: ./scripts/test-windows-upgrade.ps1
