@@ -2,7 +2,8 @@ name: Windows 릴리스 설치 검증
 on:
   workflow_dispatch:
 permissions:
-  contents: read
+  # GitHub 초안 릴리스는 쓰기 권한이 있는 토큰에만 표시됩니다.
+  contents: write
 jobs:
   upgrade:
     runs-on: windows-latest
