@@ -1,0 +1,155 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "DalZip",
+  "version": "0.1.0",
+  "identifier": "com.dalbear.dalzip",
+  "build": {
+    "beforeDevCommand": "npm run dev",
+    "devUrl": "http://localhost:5173",
+    "beforeBuildCommand": "npm run build",
+    "frontendDist": "../dist"
+  },
+  "app": {
+    "windows": [
+      {
+        "label": "main",
+        "title": "DalZip",
+        "width": 1120,
+        "height": 760,
+        "minWidth": 840,
+        "minHeight": 620,
+        "backgroundColor": "#0b1020"
+      }
+    ],
+    "security": {
+      "csp": "default-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' asset: data:; connect-src ipc: http://ipc.localhost"
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": "all",
+    "category": "Utility",
+    "shortDescription": "빠르고 안전한 달베어 ZIP 도구",
+    "copyright": "© 2026 dalbear",
+    "icon": [
+      "icons/32x32.png",
+      "icons/128x128.png",
+      "icons/128x128@2x.png",
+      "icons/icon.icns",
+      "icons/icon.ico"
+    ],
+    "fileAssociations": [
+      {
+        "ext": [
+          "zip"
+        ],
+        "name": "ZIP Archive",
+        "description": "ZIP 압축 파일",
+        "role": "Editor"
+      },
+      {
+        "ext": [
+          "zipx"
+        ],
+        "name": "ZIPX Archive",
+        "description": "ZIPX 압축 파일",
+        "role": "Editor"
+      },
+      {
+        "ext": [
+          "7z"
+        ],
+        "name": "7Z Archive",
+        "description": "7Z 압축 파일",
+        "role": "Editor"
+      },
+      {
+        "ext": [
+          "rar"
+        ],
+        "name": "RAR Archive",
+        "description": "RAR 압축 파일",
+        "role": "Editor"
+      },
+      {
+        "ext": [
+          "tar"
+        ],
+        "name": "TAR Archive",
+        "description": "TAR 압축 파일",
+        "role": "Editor"
+      },
+      {
+        "ext": [
+          "gz"
+        ],
+        "name": "GZ Archive",
+        "description": "GZ 압축 파일",
+        "role": "Editor"
+      },
+      {
+        "ext": [
+          "tgz"
+        ],
+        "name": "TGZ Archive",
+        "description": "TGZ 압축 파일",
+        "role": "Editor"
+      },
+      {
+        "ext": [
+          "bz2"
+        ],
+        "name": "BZ2 Archive",
+        "description": "BZ2 압축 파일",
+        "role": "Editor"
+      },
+      {
+        "ext": [
+          "tbz2"
+        ],
+        "name": "TBZ2 Archive",
+        "description": "TBZ2 압축 파일",
+        "role": "Editor"
+      },
+      {
+        "ext": [
+          "xz"
+        ],
+        "name": "XZ Archive",
+        "description": "XZ 압축 파일",
+        "role": "Editor"
+      },
+      {
+        "ext": [
+          "txz"
+        ],
+        "name": "TXZ Archive",
+        "description": "TXZ 압축 파일",
+        "role": "Editor"
+      },
+      {
+        "ext": [
+          "zst"
+        ],
+        "name": "ZST Archive",
+        "description": "ZST 압축 파일",
+        "role": "Editor"
+      }
+    ],
+    "macOS": {
+      "minimumSystemVersion": "12.0"
+    },
+    "windows": {
+      "nsis": {
+        "displayLanguageSelector": true,
+        "languages": [
+          "Korean",
+          "English"
+        ]
+      }
+    },
+    "resources": {
+      "../licenses/": "licenses/"
+    }
+  }
+}

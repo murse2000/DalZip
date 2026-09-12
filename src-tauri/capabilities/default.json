@@ -1,0 +1,1 @@
+{"identifier":"default","description":"기본 창의 파일 선택 및 로컬 작업 이벤트","windows":["main"],"permissions":["core:default","dialog:allow-open","dialog:allow-save"]}

@@ -1,0 +1,47 @@
+[package]
+name = "dalzip"
+version = "0.1.0"
+description = "달베어의 빠르고 안전한 ZIP 도구"
+authors = ["dalbear"]
+edition = "2021"
+
+[lib]
+name = "dalzip_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = [] }
+tauri-plugin-dialog = "2"
+tauri-plugin-single-instance = "2"
+serde = { version = "1", features = ["derive"] }
+zip = { version = "6.0.0", default-features = false, features = ["deflate-flate2-zlib-rs", "aes-crypto", "deflate64", "bzip2", "zstd", "lzma", "xz"] }
+rayon = "1.11"
+tempfile = "3"
+walkdir = "2"
+unicode-normalization = "0.1"
+sevenz-rust2 = { version = "0.22.2", features = ["deflate", "zstd"] }
+tar = { version = "0.4", default-features = false }
+flate2 = { version = "1", default-features = false, features = ["zlib-rs"] }
+bzip2 = "0.6"
+lzma-rust2 = "0.13"
+zstd = "0.13"
+unrar_sys = "0.5.8"
+trash = "5.2.8"
+blake3 = "1"
+
+[target.'cfg(target_os = "windows")'.dependencies]
+winreg = "0.55"
+
+[profile.release]
+lto = "thin"
+codegen-units = 1
+strip = true
+
+[target.'cfg(target_os = "macos")'.dependencies]
+core-foundation = "0.10"
+
+[patch.crates-io]
+unrar_sys = { path = "vendor/unrar_sys" }

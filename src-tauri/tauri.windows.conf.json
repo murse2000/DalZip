@@ -1,0 +1,1 @@
+{"bundle":{"resources":{"resources/DalZipShell.dll":"DalZipShell.dll"},"windows":{"nsis":{"installerHooks":"windows-hooks.nsh"}}}}

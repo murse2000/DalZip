@@ -1,0 +1,4 @@
+LIBRARY DalZipShell
+EXPORTS
+  DllGetClassObject PRIVATE
+  DllCanUnloadNow PRIVATE
