@@ -73,5 +73,9 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
+          if gh release view "$GITHUB_REF_NAME" >/dev/null 2>&1; then
+            echo "이미 생성된 릴리스의 파일은 변경하지 않습니다."
+            exit 0
+          fi
           gh release create "$GITHUB_REF_NAME" artifacts/* --draft --verify-tag --title "DalZip $GITHUB_REF_NAME" --notes-file "releases/$GITHUB_REF_NAME.md"
           gh release edit "$GITHUB_REF_NAME" --draft=false --latest

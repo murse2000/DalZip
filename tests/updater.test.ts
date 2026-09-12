@@ -49,3 +49,9 @@ test('최신 버전이면 업데이트를 제안하지 않는다', async () => {
     expect(document.querySelector<HTMLElement>('.update-banner')!.hidden).toBe(true);
     expect(notify).toHaveBeenCalledWith('현재 최신 버전을 사용하고 있습니다.');
 });
+test('확인창을 연 뒤 파일 작업이 시작돼도 동의 시점에 설치를 차단한다', async () => {
+    await start()(true); busy = true;
+    document.querySelector<HTMLButtonElement>('[data-install]')!.click();
+    expect(mockedInvoke.mock.calls).toEqual([['check_update']]);
+    expect(setInstalling).not.toHaveBeenCalled();
+});
