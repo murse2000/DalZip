@@ -215,7 +215,10 @@ pub fn shell_settings(app: tauri::AppHandle) -> Result<String, String> {
             .path()
             .resource_dir()
             .map_err(|e| e.to_string())?
-            .join("DalZipShell.dll");
+            .join(format!(
+                "shell/DalZipShell-{}.dll",
+                env!("CARGO_PKG_VERSION")
+            ));
         if !dll.exists() {
             return Err("탐색기 확장 DLL이 포함된 설치 패키지를 사용하세요.".into());
         }

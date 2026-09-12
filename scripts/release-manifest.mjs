@@ -3,6 +3,8 @@ import path from 'node:path';
 import {createHash} from 'node:crypto';
 const directory = process.argv[2] ?? 'artifacts';
 const version = JSON.parse(fs.readFileSync('src-tauri/tauri.conf.json')).version;
+const shellResource = JSON.parse(fs.readFileSync('src-tauri/tauri.windows.conf.json')).bundle.resources['resources/DalZipShell.dll'];
+if (shellResource !== `shell/DalZipShell-${version}.dll`) throw new Error('Windows 확장 DLL 버전이 앱 버전과 다릅니다.');
 const platforms = {};
 for (const [platform, name] of [
     ['darwin-aarch64', `DalZip-${version}-arm64.app.tar.gz`],

@@ -106,7 +106,7 @@ Windows 탐색기 확장은 `native/windows/ShellExtension.cpp`의 `IExplorerCom
 
 ## 다음 버전 배포
 
-1. package.json, Cargo.toml, tauri.conf.json과 Finder 확장 Info.plist의 버전을 맞추고 Cargo.lock/package-lock.json을 갱신합니다.
+1. package.json, Cargo.toml, tauri.conf.json, tauri.windows.conf.json의 DLL 파일명과 Finder 확장 Info.plist의 버전을 맞추고 Cargo.lock/package-lock.json을 갱신합니다.
 2. `releases/v버전.md`에 변경 사항을 작성하고 테스트를 실행합니다.
 3. 변경 사항을 커밋하고 해당 `v버전` 태그를 푸시합니다. GitHub Actions가 검증·서명·릴리스 공개를 수행합니다.
 

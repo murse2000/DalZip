@@ -41,6 +41,9 @@ jobs:
         env:
           TAURI_SIGNING_PRIVATE_KEY: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY }}
           TAURI_SIGNING_PRIVATE_KEY_PASSWORD: ''
+      - if: runner.os == 'Windows'
+        shell: pwsh
+        run: ./scripts/test-windows-upgrade.ps1
       - uses: actions/upload-artifact@v4
         with:
           name: DalZip-${{ runner.os }}
